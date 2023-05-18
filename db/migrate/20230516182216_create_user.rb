@@ -4,7 +4,7 @@ class CreateUser < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :first_name
       t.string :last_name
-      t.integer :rating, default: 0
+      t.string :password_digest
 
       t.timestamps
     end
