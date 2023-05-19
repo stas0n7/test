@@ -1,13 +1,8 @@
 class RegistrationController < ApplicationController
-
   skip_before_action :check_current_user
   before_action :check_active_session
 
-  def new
+  def new; end
 
-  end
-
-  def create
-
-  end
+  def create; end
 end

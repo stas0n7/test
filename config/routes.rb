@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "users/dashboard#show"
+  root 'users/dashboard#show'
 
   get '/sign_up', to: 'registration#new'
   post '/sign_up', to: 'registration#create'
@@ -12,5 +12,4 @@ Rails.application.routes.draw do
   delete '/sign_out', to: 'users/sessions#destroy'
 
   get '/dashboard', to: 'users/dashboard#show'
-
 end

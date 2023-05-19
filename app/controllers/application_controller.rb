@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   helper_method :current_user
 
   before_action :check_current_user
