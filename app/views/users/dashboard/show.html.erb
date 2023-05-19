@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="text-end mt-3">
+    <button class="btn btn-light avatar">Avatar</button>
+    <span><%= current_user.user_name %></span>
+    <%= link_to 'Sign out', sign_out_path, data: { turbo_method: :delete , turbo_confirm: 'Are you sure?'} %>
+  </div>
+</div>
+
+<style>
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+</style>
