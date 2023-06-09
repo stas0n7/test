@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  RSpec:
+  Linters_RSpec:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -37,19 +37,25 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
-      - name: Run tests
-        run: bundle exec rspec
-
-  Linters:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-      # Add or replace any other lints here
       - name: Rubocop
         run: bundle exec rubocop --parallel
+      - name: Brakeman
+        run: bundle exec brakeman
+      - name: RSpec
+        run: bundle exec rspec
+
+  # Linters:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - name: Install Ruby and gems
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         bundler-cache: true
+  #     # Add or replace any other lints here
+  #     - name: Rubocop
+  #       run: bundle exec rubocop --parallel
+  #     - name: Brakeman
+  #       run: bundle exec brakeman
 
