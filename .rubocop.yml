@@ -65,6 +65,9 @@ Style/FormatStringToken:
   Exclude:
     - spec/**/*
 
+Style/Documentation:
+  Enabled: false
+
 Layout/HashAlignment:
   EnforcedHashRocketStyle:
     - key

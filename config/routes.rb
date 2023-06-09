@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   delete '/sign_out', to: 'users/sessions#destroy'
 
   get '/dashboard', to: 'users/dashboard#show'
+
+  post '/avatars', to: 'users/avatars#create'
 end
