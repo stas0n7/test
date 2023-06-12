@@ -16,6 +16,7 @@
 #  index_books_on_user_id  (user_id)
 #
 class Book < ApplicationRecord
+  belongs_to :user
   def info
     "#{name} with posiition #{position} and views #{views}"
   end
