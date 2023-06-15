@@ -14,7 +14,7 @@
 #  index_attachments_on_attachmentable  (attachmentable_type,attachmentable_id)
 #
 class Attachment < ApplicationRecord
-  include AttachmentUploader::Attachment(:image)
+  include AttachmentUploader::Attachment(:attachment)
 
   belongs_to :attachmentable, polymorphic: true
 end
