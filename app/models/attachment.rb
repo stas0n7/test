@@ -3,8 +3,8 @@
 # Table name: attachments
 #
 #  id                  :bigint           not null, primary key
+#  attachment_data     :jsonb
 #  attachmentable_type :string
-#  image_data          :jsonb
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  attachmentable_id   :bigint
