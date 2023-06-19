@@ -23,8 +23,9 @@
 
   <div>
     <%= form.fields_for :cover_attributes do |cover_subform| %>
-
+      <%= cover_subform.hidden_field :attachment, value: form.object.cover&.cached_attachment_data %>
       <%= cover_subform.file_field :attachment %>
+      <%= image_tag form.object.cover.attachment_url, style: 'width: 100px' if form.object.cover.present? %>
     <% end %>
   </div>
 

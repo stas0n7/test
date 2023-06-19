@@ -1,6 +1,11 @@
 <div id="<%= dom_id article %>">
 
   <p>
+    <strong>Cover:</strong>
+    <%= image_tag article.cover.attachment_url(:small) if article.cover.present? %>
+  </p>
+
+  <p>
     <strong>Name:</strong>
     <%= article.name %>
   </p>
