@@ -6,9 +6,11 @@
 #  admin                  :boolean          default(FALSE)
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  uid                    :string
 #  user_name              :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -20,6 +22,18 @@
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  # :confirmable, :lockable, :timeoutable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+
+  def self.from_omniauth(auth)
+    name_split = auth.info.name.split(" ")
+    user = User.find_by(email: auth.info.email)
+    user ||= User.create!(provider: auth.provider,
+                          uid: auth.uid,
+                          user_name: "#{name_split[0]} #{name_split[1]}",
+                          email: auth.info.email,
+                          password: Devise.friendly_token[0, 20])
+    user
+  end
 end
