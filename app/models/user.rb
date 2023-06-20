@@ -26,6 +26,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
+  after_create :confirmation_email
+
   def self.from_omniauth(auth)
     name_split = auth.info.name.split(" ")
     user = User.find_by(email: auth.info.email)
@@ -35,5 +37,11 @@ class User < ApplicationRecord
                           email: auth.info.email,
                           password: Devise.friendly_token[0, 20])
     user
+  end
+
+  private
+
+  def confirmation_email
+    UserMailer.confirmation(id).deliver_later
   end
 end
