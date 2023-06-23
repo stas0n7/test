@@ -2,9 +2,6 @@ require "image_processing/mini_magick"
 
 class AttachmentUploader < Shrine
 
-  plugin :derivatives
-  plugin :presign_endpoint
-
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
  

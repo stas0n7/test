@@ -2,7 +2,7 @@
 
   <p>
     <strong>Cover:</strong>
-    <%= image_tag @article.cover.attachment_url if @article.cover.present? %>
+    <%= image_tag @article.cover.attachment_url(:large) if @article.cover.present? %>
   </p>
 
   <p>

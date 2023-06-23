@@ -26,3 +26,4 @@ Shrine.plugin :rack_file # for non-Rails apps
 Shrine.plugin :validation_helpers
 Shrine.plugin :determine_mime_type
 Shrine.plugin :remove_attachment
+Shrine.plugin :derivatives, create_on_promote: true
