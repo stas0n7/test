@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= @book.body %>
+  </p>
+
+  <p>
+    <strong>Views:</strong>
+    <%= @book.views %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @book.category %>
+  </p>
+
+
+<div>
+  <%= link_to "Edit this book", edit_book_path(@book) %> |
+  <%= link_to "Back to books", books_path %>
+
+  <%= button_to "Destroy this book", @book, method: :delete %>
+</div>
